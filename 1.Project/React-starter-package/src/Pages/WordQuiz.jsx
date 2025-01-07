@@ -93,9 +93,11 @@ const styles = {
 
 const WordQuiz = () => {
 
+
+  const { word } = useSelector((state) => state.words);
   const navigate = useNavigate()
-  // Sample data - replace with your actual word-translation pairs
-  const wordPairs = useSelector(state => state.words.word);
+  const wordPairs =word.filter((item) => !item.isLearnt);
+
 
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [options, setOptions] = useState([]);
@@ -120,7 +122,7 @@ const WordQuiz = () => {
       return;
     }
 
-    const randomIndex = Math.floor(Math.random() * wordPairs.length);
+    const randomIndex = Math.floor(Math.random() *10);
     const question = wordPairs[randomIndex];
     
     // Generate wrong options from other translations

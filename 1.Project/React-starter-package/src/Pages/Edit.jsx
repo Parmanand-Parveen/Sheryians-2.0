@@ -19,7 +19,7 @@ function Edit() {
   const [editedWord, setEditedWord] = useState(initialState);
   const { word } = useSelector((state) => state.words);
 
-  const filteredWord = word.find((item) => item.id === params.id);
+  const filteredWord = word.find((item) => item.id == params.id);
 
   useEffect(() => {
     if (filteredWord) {
