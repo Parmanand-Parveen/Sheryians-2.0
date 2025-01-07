@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { deleteWord, isLearnt } from "../Store/Slice/WordSlice";
 
-function FlashCard({ frontWord = "hello", backWord = "world", id }) {
+function Flashcard({ frontWord = "hello", backWord = "world", id }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -54,4 +54,4 @@ function FlashCard({ frontWord = "hello", backWord = "world", id }) {
   );
 }
 
-export default FlashCard;
+export default Flashcard;
