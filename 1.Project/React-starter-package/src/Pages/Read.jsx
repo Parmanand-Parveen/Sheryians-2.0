@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import FlashCard from "../Components/FlashCard.jsx.jsx";
+import FlashCard from "../Components/FlashCard.jsx";
 
 function Read() {
   const { word } = useSelector((state) => state.words);
