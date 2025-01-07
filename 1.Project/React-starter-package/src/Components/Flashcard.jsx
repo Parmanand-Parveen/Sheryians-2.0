@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./FlashCards.css"; 
+import "./Style.css"; 
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { deleteWord, isLearnt } from "../Store/Slice/WordSlice";
