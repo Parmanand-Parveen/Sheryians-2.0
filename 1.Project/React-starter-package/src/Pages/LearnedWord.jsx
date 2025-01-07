@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import FlashCard from "../Components/FlashCard.jsx";
+import FlashCard from "../Components/FlashCard";
+
 
 
 
