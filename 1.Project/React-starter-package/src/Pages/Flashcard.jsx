@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { deleteWord, isLearnt } from "../Store/Slice/WordSlice";
 
-function Flashcard({ frontWord = "hello", backWord = "world", id }) {
+function Flashcard({ frontWord = "hello", backWord = "world", id ,text }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ function Flashcard({ frontWord = "hello", backWord = "world", id }) {
         {/* Front Side */}
         <div className="front bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100">
           <div className="flex flex-col items-center dark:text-gray-100 ">
-          <h1 className="text-lg font-semibold mb-2 dark:text-gray-800" onClick={(e)=> { e.stopPropagation(); dispatch(isLearnt(id))}}>Mark as learned</h1>
+          <h1 className="text-lg font-semibold mb-2 dark:text-gray-800" onClick={(e)=> { e.stopPropagation(); dispatch(isLearnt(id))}}>{text}</h1>
             <h2 className="text-lg font-semibold mb-2 dark:text-gray-800">Word :</h2>
             <span className="text-xl font-bold dark:text-gray-800">{frontWord}</span>
             <button

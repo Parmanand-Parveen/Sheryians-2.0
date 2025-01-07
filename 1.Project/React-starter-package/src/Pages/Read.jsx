@@ -30,6 +30,7 @@ function Read() {
                 frontWord={item.word}
                 backWord={item.translation}
                 id={item.id}
+                text={"Mark as Learned"}
               />
             </div>
           ))}

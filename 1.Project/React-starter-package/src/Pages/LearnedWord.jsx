@@ -32,6 +32,7 @@ function LearnedWord() {
                 frontWord={item.word}
                 backWord={item.translation}
                 id={item.id}
+                text={"Mark as Unlearned"}
               />
             </div>
           ))}
