@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Flashcard from "../Components/FlashCard";
+import FlashCard from "../Components/FlashCard";
 
 function Read() {
   const { word } = useSelector((state) => state.words);
@@ -24,7 +24,7 @@ function Read() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredWord.map((item) => (
             <div key={item.id} className="transition-transform hover:scale-105">
-              <Flashcard
+              <FlashCard
                 frontWord={item.word}
                 backWord={item.translation}
                 id={item.id}
