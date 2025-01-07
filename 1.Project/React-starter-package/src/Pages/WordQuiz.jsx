@@ -122,7 +122,7 @@ const WordQuiz = () => {
       return;
     }
 
-    const randomIndex = Math.floor(Math.random() *10);
+    const randomIndex = Math.floor(Math.random() * wordPairs.length);
     const question = wordPairs[randomIndex];
     
     // Generate wrong options from other translations
