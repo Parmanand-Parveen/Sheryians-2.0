@@ -28,7 +28,7 @@ function Nav() {
 
           {/* Hamburger Menu */}
           <button
-            className="md:hidden z-10 p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-colors"
+            className="md:hidden z-[11] p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -40,7 +40,7 @@ function Nav() {
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-6 ">
             <NavLinks setIsMenuOpen={setIsMenuOpen} />
             <ThemeSwitch />
           </div>
@@ -49,6 +49,7 @@ function Nav() {
         {/* Mobile Navigation */}
         <div
           className={`
+            z-10
             fixed inset-0 bg-gray-100/95 dark:bg-gray-900/95 md:hidden
             transform transition-transform duration-300 ease-in-out
             ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}

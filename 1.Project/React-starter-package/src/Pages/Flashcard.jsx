@@ -10,7 +10,7 @@ function Flashcard({ frontWord = "hello", backWord = "world", id ,text }) {
   const dispatch = useDispatch();
 
   return (
-    <div className="relative flex justify-center items-center w-full p-4">
+    <div className=" flex  justify-center items-center w-full p-4">
       <div
         className={`flashcard ${isFlipped ? "flipped" : ""} `}
         onClick={() => setIsFlipped(!isFlipped)}
