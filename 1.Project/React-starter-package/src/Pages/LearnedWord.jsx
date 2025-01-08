@@ -10,7 +10,7 @@ function LearnedWord() {
   const { word } = useSelector((state) => state.words);
   
    const filteredWord = word.filter((item) => item.isLearnt);
-   console.log(filteredWord)
+   
    
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6">
