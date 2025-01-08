@@ -37,7 +37,7 @@ function Read() {
 
       <h1 className="text-4xl font-bold mb-8 text-center">Word List</h1>
 
-      {serchedwords.length === 0 ? (
+      {filteredWord.length === 0 ? (
         <p className="text-center text-lg font-medium bg-gray-200 dark:bg-gray-800 rounded-lg py-4 px-6">
           No words found.
         </p>
@@ -57,19 +57,21 @@ function Read() {
                   />
                 </div>
               ))
-            : serchedwords.map((item) => (
-                <div
-                  key={item.id}
-                  className="transition-transform hover:scale-105"
-                >
-                  <Flashcard
-                    frontWord={item.word}
-                    backWord={item.translation}
-                    id={item.id}
-                    text={"Mark as Learned"}
-                  />
-                </div>
-              ))}
+            :(serchedwords.length == 0 ? ( <p className="text-center text-lg font-medium bg-gray-200 dark:bg-gray-800 rounded-lg py-4 px-6">
+              No words found.
+            </p>): serchedwords.map((item) => (
+              <div
+                key={item.id}
+                className="transition-transform hover:scale-105"
+              >
+                <Flashcard
+                  frontWord={item.word}
+                  backWord={item.translation}
+                  id={item.id}
+                  text={"Mark as Learned"}
+                />
+              </div>
+            )) ) }
         </div>
       )}
     </div>
