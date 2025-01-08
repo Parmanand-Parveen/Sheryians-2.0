@@ -20,6 +20,7 @@ function Read() {
 
   useEffect(() => {
     if (search === "") {
+      setSerchedwords([]);
     } else {
       searchWord(search);
     }
