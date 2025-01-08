@@ -9,7 +9,7 @@ function Read() {
   const [search, setsearch] = useState("");
 
   const [serchedwords, setSerchedwords] = useState([]);
-  console.log(serchedwords);
+  
 
   const searchWord = (letters) => {
     const filter = filteredWord.filter((item) =>
@@ -19,12 +19,10 @@ function Read() {
   };
 
   useEffect(() => {
-    if (search === "") {
-      setSerchedwords([]);
-    } else {
+    
       searchWord(search);
-    }
-  }, [search]);
+    
+  }, [search,filteredWord.length]);
 
   return (
     <div className="min-h-screen  bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6">
@@ -38,27 +36,13 @@ function Read() {
 
       <h1 className="text-4xl font-bold mb-8 text-center">Word List</h1>
 
-      {filteredWord.length === 0 ? (
+      {serchedwords.length === 0 ? (
         <p className="text-center text-lg font-medium bg-gray-200 dark:bg-gray-800 rounded-lg py-4 px-6">
           No words found.
         </p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {search === ""
-            ? filteredWord.map((item) => (
-                <div
-                  key={item.id}
-                  className="transition-transform hover:scale-105"
-                >
-                  <Flashcard
-                    frontWord={item.word}
-                    backWord={item.translation}
-                    id={item.id}
-                    text={"Mark as Learned"}
-                  />
-                </div>
-              ))
-            :(serchedwords.length == 0 ? ( <p className="text-center text-lg font-medium bg-gray-200 dark:bg-gray-800 rounded-lg py-4 px-6">
+          {(serchedwords.length == 0 ? ( <p className="text-center text-lg font-medium bg-gray-200 dark:bg-gray-800 rounded-lg py-4 px-6">
               No words found.
             </p>): serchedwords.map((item) => (
               <div

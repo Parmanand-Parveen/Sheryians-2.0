@@ -83,7 +83,7 @@ const wordSlice = createSlice({
              localStorage.setItem("word",JSON.stringify(state.word))
          },
          isLearnt:(state,action)=>{
-            console.log(action.payload)
+          
              state.word = state.word.map((item)=>{
                  if(item.id === action.payload){
                      return  {...item, isLearnt:!item.isLearnt}
