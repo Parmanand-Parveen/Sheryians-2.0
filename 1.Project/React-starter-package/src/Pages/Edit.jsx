@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import { editWord } from "../Store/Slice/WordSlice";
 import { Edit2, Edit2Icon, Edit3 } from "lucide-react";
+import { toast } from "react-toastify";
 
 function Edit() {
   const dispatch = useDispatch();
@@ -31,6 +32,11 @@ function Edit() {
     e.preventDefault();
     dispatch(editWord(editedWord));
     navigate("/read");
+    toast.warn("Word updated successfully",{
+      draggable:true,
+      icon: <Edit2/>,
+
+    })
   };
 
   return (

@@ -2,6 +2,7 @@ import { nanoid } from "nanoid";
 import React, { useState } from "react";
 import { addWord } from "../Store/Slice/WordSlice";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 function Add() {
   const dispatch = useDispatch();
@@ -20,6 +21,11 @@ function Add() {
     e.preventDefault();
     dispatch(addWord(form));
     setForm(intitialState);
+    toast.success("Word added successfully" ,{
+      draggable:true,
+      autoClose:3000
+
+    })
   };
 
   return (
