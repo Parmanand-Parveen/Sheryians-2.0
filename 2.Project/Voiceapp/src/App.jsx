@@ -32,11 +32,11 @@ function App() {
   }, [transcript]); // Depend on `transcript`
 
   return (
-    <div className="max-w-md md:max-w-lg lg:max-w-xl mx-auto mt-10 p-6 bg-gray-100 rounded-lg shadow-lg">
-      <h1 className="text-2xl lg:text-3xl font-bold text-blue-600 text-center mb-6">
+    <div className="max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto mt-10 p-6 bg-gray-100 rounded-lg shadow-lg">
+      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-600 text-center mb-6">
         Voice Assistant
       </h1>
-      <p className="text-lg md:text-xl mb-4">
+      <p className="text-lg sm:text-xl md:text-2xl mb-4">
         Microphone: {listening ? '🎤 On' : '❌ Off'}
       </p>
       <div className="flex flex-col sm:flex-row sm:justify-between gap-4 mb-6">
