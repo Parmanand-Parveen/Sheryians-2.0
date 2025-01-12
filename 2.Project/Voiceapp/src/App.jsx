@@ -2,7 +2,7 @@ import 'regenerator-runtime/runtime';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { useState, useEffect } from 'react';
 import  {GoogleGenerativeAI} from "@google/generative-ai"
-import {API_KEY} from "./env"
+
 
 
 
@@ -33,7 +33,6 @@ const prompt = "Explain how AI works";
 const result = async () => {
   setLoading(true)
   const response = await model.generateContent(transcript);
-  console.log(response.response.text());
   setResponse(response.response.text());
   setLoading(false)
 };
