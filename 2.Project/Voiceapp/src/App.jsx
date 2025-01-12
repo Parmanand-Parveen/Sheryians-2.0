@@ -1,9 +1,18 @@
 import 'regenerator-runtime/runtime';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { useState, useEffect } from 'react';
+import  {GoogleGenerativeAI} from "@google/generative-ai"
+
+
 
 function App() {
+
+  const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
+
+  
+
   const [response, setResponse] = useState('');
+  const [loading , setLoading ] = useState(false)
 
   const {
     transcript,
@@ -15,20 +24,44 @@ function App() {
   if (!browserSupportsSpeechRecognition) {
     return <div className="text-red-500 text-center">Browser doesn't support speech recognition.</div>;
   }
+const genAI = new GoogleGenerativeAI(apiKey);
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+const prompt = "Explain how AI works";
+
+const result = async () => {
+  setLoading(true)
+  const response = await model.generateContent(transcript);
+  console.log(response.response.text());
+  setResponse(response.response.text());
+  setLoading(false)
+};
+
+
 
   // Use useEffect to handle transcript changes
   useEffect(() => {
     const lowerTranscript = transcript.toLowerCase();
-
-    if (lowerTranscript.includes('hello')) {
-      setResponse('Hello, I am your voice assistant');
-    } else if (lowerTranscript.includes('how are you')) {
-      setResponse('I am fine, what about you?');
-    } else if (lowerTranscript.includes('time')) {
-      setResponse(new Date().toLocaleTimeString());
-    } else if (lowerTranscript.trim() !== '') {
-      setResponse('I do not understand');
+   
+    if (lowerTranscript.trim() == "") {
+      setResponse('');
+    }else if (lowerTranscript.includes('hello') || lowerTranscript.includes('hi')) {
+      setResponse('Hello! How can I help you?');
+    } else if (lowerTranscript.includes('time') ) {
+       setResponse('The current time is ' + new Date().toLocaleTimeString());
+    } else if (lowerTranscript.includes('date') ) {
+       setResponse('The current date is ' + new Date().toLocaleDateString());
+    } else if (lowerTranscript.includes('open google') ) {
+      window.open('https://google.com', '_blank');
+    } else if (lowerTranscript.includes('open youtube') ) {
+      window.open('https://youtube.com', '_blank'); 
+    } else if (!lowerTranscript.includes("time") || !lowerTranscript.includes("date") || !lowerTranscript.includes("open google") || !lowerTranscript.includes("open youtube")) {
+      result();
     }
+  
+    
+   
+
   }, [transcript]); // Depend on `transcript`
 
   return (
@@ -63,7 +96,7 @@ function App() {
         <strong>Transcript:</strong> {transcript}
       </p>
       <p className="p-4 bg-green-100 rounded text-green-700">
-        <strong>Response:</strong> {response}
+        <strong>Response:</strong> {loading ? "Generating..." : response}
       </p>
     </div>
   );
