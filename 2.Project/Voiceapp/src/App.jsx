@@ -2,6 +2,7 @@ import 'regenerator-runtime/runtime';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { useState, useEffect } from 'react';
 import  {GoogleGenerativeAI} from "@google/generative-ai"
+import {API_KEY} from "./env"
 
 
 
