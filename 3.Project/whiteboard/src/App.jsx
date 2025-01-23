@@ -6,7 +6,7 @@ function App() {
   const [isDrawing, setIsDrawing] = useState(false);
   const [tool, setTool] = useState('pencil');
   const [color, setColor] = useState('#000000');
-  const [lineWidth, setLineWidth] = useState(2);
+  const [lineWidth, setLineWidth] = useState(1);
   const [startPoint, setStartPoint] = useState(null);
   const [history, setHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
@@ -14,12 +14,13 @@ function App() {
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas.getContext('2d');
-    canvas.width = window.innerWidth - 100;
-    canvas.height = window.innerHeight - 100;
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.width = window.innerWidth-100;
+    canvas.height = window.innerHeight-100;
     context.strokeStyle = color;
-    context.lineWidth = lineWidth;
-    context.lineCap = 'round';
-    context.lineJoin = 'round';
+    context.lineWidth = lineWidth; 
+   
 
     const initialState = context.getImageData(0, 0, canvas.width, canvas.height);
     setHistory([initialState]);
@@ -34,17 +35,15 @@ function App() {
 
     window.addEventListener('resize', resizeCanvas);
     return () => window.removeEventListener('resize', resizeCanvas);
-  }, [color, lineWidth]);
+  }, []);
 
   const startDrawing = (e) => {
     const canvas = canvasRef.current;
     const rect = canvas.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-
     setIsDrawing(true);
     setStartPoint({ x, y });
-
     const context = canvas.getContext('2d');
     context.beginPath();
     context.moveTo(x, y);
@@ -166,7 +165,7 @@ function App() {
         </div>
       </div>
       <div className="pt-20 p-4">
-        <canvas
+        <canvas 
           ref={canvasRef}
           onMouseDown={startDrawing}
           onMouseMove={draw}
